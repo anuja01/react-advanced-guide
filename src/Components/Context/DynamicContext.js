@@ -25,7 +25,11 @@ const ThemeContext = React.createContext(themes.dark)
 const ThemeToggleButton = (props) => {
   const theme = React.useContext(ThemeContext)
   return (
-    <button style={{ backgroundColor: theme.background, color: theme.textColor }} onClick={() => props.changeTheme()}>Change Theme</button>
+    <button
+      style={{ backgroundColor: theme.background, color: theme.textColor }}
+      onClick={() => props.changeTheme()}>
+      Change Theme
+    </button>
   )
 }
 /**
@@ -35,26 +39,26 @@ const ThemeToggleButton = (props) => {
 /**
  * START Content of the page effected by the context theme
  */
-const ApplyForm = () => {
+const ApplyForm = (props) => {
   const theme = React.useContext(ThemeContext)
-  const submitForm = (e) => {
-    alert(`Submited Values \n name: ${e.target.name.value} \n age: ${e.target.age.value} \n desc: ${e.target.description.value}`)
-    e.preventDefault();
-  }
+
   return (
     <div style={{ backgroundColor: theme.background, color: theme.textColor }}>
-      <form onSubmit={submitForm}>
+      <form onSubmit={props.submitForm}>
         <label> Name:
         <input type='text' name='name' />
         </label>
+        <label style={{ color: 'red' }}>{props.errors.name}</label>
         <br />
         <label> Age:
         <input type='number' name='age' />
         </label>
+        <label style={{ color: 'red' }}>{props.errors.age}</label>
         <br />
         <label> Description:
         <textarea type='text' name='description' />
         </label>
+        <label style={{ color: 'red' }}>{props.errors.desc}</label>
         <br />
         <input style={{ backgroundColor: theme.background, color: theme.textColor }} type='submit' name='submit' value='Submit' />
       </form>
@@ -73,12 +77,23 @@ class DynamicContext extends React.Component {
     super(props);
     this.state = {
       theme: themes.light,
+      errors: {},
+
     }
   }
   render() {
+    const submitForm = (e) => {
+      let errors = []
+      !e.target.name.value && (errors['name'] = 'Please enter user name');
+      !e.target.age.value && (errors['age'] = 'Please enter age');
+      !e.target.description.value && (errors['desc'] = 'Please enter description');
+      this.setState({ errors: errors })
+      !errors.length === 0 && alert(`Submited Values \n name: ${e.target.name.value} \n age: ${e.target.age.value} \n desc: ${e.target.description.value}`)
+      e.preventDefault();
+    }
     return (
       <ThemeContext.Provider value={this.state.theme}>
-        <ApplyForm />
+        <ApplyForm submitForm={submitForm} errors={this.state.errors} />
         <ThemeToggleButton
           changeTheme={() =>
             this.setState((state) =>
