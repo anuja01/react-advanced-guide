@@ -3,6 +3,8 @@ import CodeSplitting from '../Components/CodeSplitting'
 import App from '../Components/Context/WithoutContext';
 import AppWithContext from '../Components/Context/WithContext';
 import DynamicContext from '../Components/Context/DynamicContext';
+import ErrorBoundariySample, { ErrorBoundary } from '../Components/ErrorBoundaries';
+
 const Main = () => {
     return (
         <div>
@@ -15,6 +17,11 @@ const Main = () => {
             <br />
             <div>--------- Dynamic Context (Changing themes)--------</div>
             <DynamicContext />
+            <br />
+            <div>--------- Error Boundaries --------</div>
+            <ErrorBoundary>
+                {/* <ErrorBoundariySample /> */}
+            </ErrorBoundary>
         </div>
     )
 }
