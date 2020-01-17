@@ -1,8 +1,16 @@
 import React from 'react';
-import Index from '../Components/CodeSplitting'
+import CodeSplitting from '../Components/CodeSplitting'
+import App from '../Components/Context/WithoutContext';
+import AppWithContext from '../Components/Context/WithContext';
 const Main = () => {
     return (
-        <div><Index /></div>
+        <div>
+            <CodeSplitting />
+            <br />
+            <App />
+            <br />
+            <AppWithContext />
+        </div>
     )
 }
 
