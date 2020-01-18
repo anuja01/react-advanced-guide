@@ -20,7 +20,9 @@ const Main = () => {
             <br />
             <div>--------- Error Boundaries --------</div>
             <ErrorBoundary>
-                {/* <ErrorBoundariySample /> */}
+                <div>
+                    {/* <ErrorBoundariySample /> */}
+                </div>
             </ErrorBoundary>
         </div>
     )
