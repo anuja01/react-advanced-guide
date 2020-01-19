@@ -4,7 +4,7 @@ import App from '../Components/Context/WithoutContext';
 import AppWithContext from '../Components/Context/WithContext';
 import DynamicContext from '../Components/Context/DynamicContext';
 import ErrorBoundariySample, { ErrorBoundary } from '../Components/ErrorBoundaries';
-
+import ForwardRef from '../Components/ForwardRef'
 const Main = () => {
     return (
         <div>
@@ -24,6 +24,9 @@ const Main = () => {
                     {/* <ErrorBoundariySample /> */}
                 </div>
             </ErrorBoundary>
+            <br />
+            <div>--------- Forwarded Ref --------</div>
+            <ForwardRef />
         </div>
     )
 }
