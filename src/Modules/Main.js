@@ -6,9 +6,11 @@ import DynamicContext from '../Components/Context/DynamicContext';
 import ErrorBoundariySample, { ErrorBoundary } from '../Components/ErrorBoundaries';
 import ForwardRef from '../Components/ForwardRef'
 import MainHOC from '../Components/HigherOrderComponent';
+import MainJSX from '../Components/InDepthJSX';
 const Main = () => {
     return (
         <div>
+            <div>--------- Code splitting ----------</div>
             <CodeSplitting />
             <br />
             <App />
@@ -35,6 +37,9 @@ const Main = () => {
                 Avoid duplicating the logic accross the application.
             </p>
             <MainHOC />
+            <br />
+            <div>-------- JSX in depth --------</div>
+            <MainJSX />
         </div>
     )
 }

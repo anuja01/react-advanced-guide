@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 
 // introducing context
 const ThemeContext = React.createContext();
+
+// context is used to share data among the 
 class AppWithContext extends React.Component {
     render() {
-        // wrap main app from ThemeContext provider
+        // wrap main app from ThemeContext provider and pass default value
+        // this can be accessed within any child (either functional or class component) in any level
         return (
             <ThemeContext.Provider value={{ buttonColor: 'red', menuColor: 'green' }}>
                 <div>App with context</div>
@@ -24,6 +27,9 @@ const Toolbar = () => {
         </>
     )
 }
+
+// to access context in class component must declare 'static contextType' and assign context
+// then can access via this.context
 class ThemedButton extends React.Component {
     // name 'contextType' is a must
     static contextType = ThemeContext;
