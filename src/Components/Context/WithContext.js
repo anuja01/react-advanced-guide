@@ -22,7 +22,9 @@ const Toolbar = () => {
     const { menuColor } = useContext(ThemeContext)
     return (
         <>
-            <div style={{ color: menuColor }}>Toolbar</div>
+            <div style={{ color: menuColor }}>
+                Toolbar - in functional components -> <code>const menuColor = useContext(ThemeContext)</code>
+            </div>
             <ThemedButton />
         </>
     )
@@ -35,7 +37,12 @@ class ThemedButton extends React.Component {
     static contextType = ThemeContext;
     render() {
         return (
-            <button style={{ backgroundColor: this.context.buttonColor }}>Click Me</button>)
+            <button
+                style={{ backgroundColor: this.context.buttonColor }}
+                onClick={() => alert('static contextType=ThemeContext  - is used to access context in class components')}>
+                Click Me
+            </button>
+        )
     }
 }
 export default AppWithContext;

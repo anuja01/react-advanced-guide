@@ -20,6 +20,6 @@ const Toolbar = (props) => (
 // in order to access theme in leaf level component, must pass through each level as props.
 // by using context, can avoid this unwanted props drilling
 const ThemedButton = (props) => (
-    <button style={{backgroundColor: props.theme.buttonColor}}>Click Me</button>
+    <button style={{backgroundColor: props.theme.buttonColor}} onClick={()=>alert('button color and text color is from theme ')}>Click Me</button>
 )
 export default App;
