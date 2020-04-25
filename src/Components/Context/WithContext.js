@@ -34,7 +34,7 @@ const Toolbar = () => {
 // then can access via this.context
 class ThemedButton extends React.Component {
     // name 'contextType' is a must
-    static contextType = ThemeContext;
+    static contextType = ThemeContext; // Theme context is available via Provider
     render() {
         return (
             <button
